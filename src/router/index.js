@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventList from '@/views/EventList'
 import About from '@/views/About'
-import EventDetails from '@/views/EventDetails'
+import EventDetails from '@/views/event/Details'
+import EventRegister from '@/views/event/Register'
+import EventEdit from '@/views/event/Edit'
+import EventLayout from '@/views/event/Layout'
 
 const routes = [
   {
@@ -12,9 +15,26 @@ const routes = [
   },
   {
     path: '/events/:id',
-    name: 'EventDetails',
+    name: 'EventLayout',
     props: true,
-    component: EventDetails,
+    component: EventLayout,
+    children: [
+      {
+        path: '',
+        name: 'EventDetails',
+        component: EventDetails,
+      },
+      {
+        path: '',
+        name: 'EventRegister',
+        component: EventRegister,
+      },
+      {
+        path: '',
+        name: 'EventEdit',
+        component: EventEdit,
+      },
+    ],
   },
   {
     path: '/about',
