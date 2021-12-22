@@ -19,7 +19,7 @@ export default {
   },
 
   created() {
-    EventService.getEvent(this.id)
+    EventService.getEvent(this.$route.params.id)
       .then((response) => {
         this.event = response.data
       })
